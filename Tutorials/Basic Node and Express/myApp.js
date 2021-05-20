@@ -7,8 +7,10 @@ app.get('/',  function (req, res) {
     res.send('Hello Express');
 });
 */
+let relativePath = '/views';
+let file = '/index.html';
+let absolutePath = __dirname + relativePath + file;
 
-const absolutePath = __dirname + '/views/index.html'
 app.get('/', function(req, res) {
   res.sendFile(absolutePath)
 });
