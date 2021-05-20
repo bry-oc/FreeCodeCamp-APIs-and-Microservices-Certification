@@ -66,10 +66,21 @@ app.get(relativePath, function(req, res){
 });
 
 //send a user's name in a GET request using query params
+//GET carries request parameter appended in URL string
+
+//send a user's name in a POST request 
+//POST carries request parameter in message body 
+//which makes it more secure way of transferring data 
+//from client to server in http protocol.
+
 relativePath = '/name'
 app.route(relativePath).get(function(req, res){
     const firstname = req.query.first;
     const lastname = req.query.last;
+    res.json({name: firstname + " " + lastname});
+}).post(function(req, res){
+    const firstname = req.body.first;
+    const lastname= req.body.last;
     res.json({name: firstname + " " + lastname});
 });
 
