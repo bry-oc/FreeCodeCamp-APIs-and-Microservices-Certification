@@ -12,11 +12,15 @@ console.log(absolutePath);
 
 app.use(relativePath, express.static(absolutePath));
 
+//express parser for handling urlencoded html
+app.use(express.urlencoded({extended: false}));
+
 //create a logger for requests
 app.use('/', function(req, res, next){
     console.log(req.method + " " + req.path + " - " + req.ip);
     next();
 });
+
 /*
 //root path will send a response with string "Hello Express"
 app.get('/',  function (req, res) {
@@ -60,7 +64,6 @@ relativePath = '/:word/echo'
 app.get(relativePath, function(req, res){
     res.json({echo: req.params.word})
 });
-
 
 //send a user's name in a GET request using query params
 relativePath = '/name'
