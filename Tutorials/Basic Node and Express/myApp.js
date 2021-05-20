@@ -22,8 +22,15 @@ absolutePath = __dirname + relativePath + file;
 console.log(absolutePath);
 
 app.get('/', function(req, res) {
-  res.sendFile(absolutePath);
+    res.sendFile(absolutePath);
 });
+
+relativePath = '/json';
+app.get(relativePath, function(req, res) {
+    res.json({message: "Hello json"});
+});
+
+
 
 
 
