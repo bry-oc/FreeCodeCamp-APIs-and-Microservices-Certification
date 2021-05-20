@@ -47,7 +47,8 @@ app.get(relativePath, function(req, res) {
 });
 
 //send the current time in a GET request at the '/now' path with a middleware function to set the time
-app.get('/now', function(req, res, next){
+relativePath = '/now';
+app.get(relativePath, function(req, res, next){
     req.time = new Date().toString();
     next();
 }, function(req, res){
@@ -55,10 +56,19 @@ app.get('/now', function(req, res, next){
 });
 
 //send an echo of the word in '/:word/echo' path with a GET request
-app.get('/:word/echo', function(req, res){
+relativePath = '/:word/echo'
+app.get(relativePath, function(req, res){
     res.json({echo: req.params.word})
 });
 
+
+//send a user's name in a GET request according to POST request query params
+relativePath = '/name'
+app.route(relativePath).get(function(req, res){
+    const firstname = req.query.firstname;
+    const lastname = req.query.lastname;
+    res.json({name: firstname + " " + lastname});
+});
 
 
 
