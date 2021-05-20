@@ -62,11 +62,11 @@ app.get(relativePath, function(req, res){
 });
 
 
-//send a user's name in a GET request according to POST request query params
+//send a user's name in a GET request using query params
 relativePath = '/name'
 app.route(relativePath).get(function(req, res){
-    const firstname = req.query.firstname;
-    const lastname = req.query.lastname;
+    const firstname = req.query.first;
+    const lastname = req.query.last;
     res.json({name: firstname + " " + lastname});
 });
 
