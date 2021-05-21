@@ -1,13 +1,16 @@
 import './App.css';
 import Title from './components/title.js';
 import Button from './components/button.js';
-import Header from './components/header.js';
+import ExampleUsage from './components/exampleusage.js';
+import UserStories from './components/userstories.js'
 
 function App() {
   return (
     <div id="main">
       < Title title="Timestamp Microservice" />
-      < Button buttonId="submit"/> 
+      < Button /> 
+      < ExampleUsage />
+      < UserStories />
     </div>
     
   );
