@@ -10,8 +10,13 @@ function Button(){
         fetch("/api/" + timestamp)
             .then((res) => res.json())
             .then((data) => {
-                setUTC(data.utc)
-                setUNIX(data.unix)
+                if(!data.error){
+                    setUTC(data.utc);
+                    setUNIX(data.unix);
+                }else {
+                    setUTC("Invalid");
+                    setUNIX("Invalid");
+                }                
             });
     }
     

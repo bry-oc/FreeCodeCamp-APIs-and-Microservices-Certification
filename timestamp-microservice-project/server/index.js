@@ -8,7 +8,7 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 
 function createTimestamp(timestamp){
     let unixSeconds = timestamp === undefined ? Date.now() : timestamp;
-    console.log(unixSeconds);
+    //console.log(unixSeconds);
     let unixTime = new Date(unixSeconds);
     let weekday = days[unixTime.getUTCDay()];
     let day = unixTime.getUTCDate() > 9 ? unixTime.getUTCDate() : "0" + unixTime.getUTCDate();
@@ -18,7 +18,7 @@ function createTimestamp(timestamp){
     let minutes = unixTime.getUTCMinutes() > 9 ? unixTime.getUTCMinutes() : "0" + unixTime.getUTCMinutes();
     let seconds = unixTime.getUTCSeconds() > 9 ? unixTime.getUTCSeconds() : "0" + unixTime.getUTCSeconds();
     let utcTime =  weekday + ", " + day + " " + month + " " + year + " " + hour + ":" + minutes + ":" + seconds + " GMT"; 
-    console.log({unix: unixSeconds, utc: utcTime})
+    //console.log({unix: unixSeconds, utc: utcTime})
     return {unix: unixSeconds, utc: utcTime};
 }
 
@@ -44,14 +44,14 @@ app.get("/api/:date?", function(req, res){
     } else {
         //make sure the date is a valid format and send the timestamp in unix and utc format
         let timestamp = req.params.date;
-        console.log("timestamp: " + timestamp);
+        //console.log("timestamp: " + timestamp);
         let utcRegex = /^\d{4}-\d{2}-\d{2}$/;
         let unixRegex = /^\d+$/
         if(utcRegex.test(timestamp)){
             //get the year, month, day from the string
-            console.log("utc!!!")
+            //console.log("utc!!!")
             //ensure the date is valid
-            console.log(isValidDate(timestamp));
+            //console.log(isValidDate(timestamp));
             if(isValidDate(timestamp)){
                 let utcYear = timestamp.slice(0, 4);
                 let utcMonth = timestamp.slice(5,7);
@@ -65,7 +65,7 @@ app.get("/api/:date?", function(req, res){
                 res.json({error: "Invalid Date"});
             }
         } else if (unixRegex.test(timestamp)){
-            console.log("unix!!!");
+            //console.log("unix!!!");
             let timestampResult = createTimestamp(parseInt(timestamp));
             res.json(timestampResult);
         } else {
@@ -74,7 +74,7 @@ app.get("/api/:date?", function(req, res){
             if(utcDate != "Invalid Date"){
                 utcDate.setUTCHours(0, 0, 0, 0);
                 let unixTimestamp = utcDate.getTime();
-                console.log(typeof(unixTimestamp));
+                //console.log(typeof(unixTimestamp));
                 let timestampResult = createTimestamp(unixTimestamp);
                 res.json(timestampResult);
             } else {
