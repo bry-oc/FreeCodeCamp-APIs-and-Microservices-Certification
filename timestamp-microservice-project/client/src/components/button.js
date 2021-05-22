@@ -1,26 +1,33 @@
 import React from "react";
 
 function Button(){
-    const [data, setData] = React.useState(null);
+    const [utc, setUTC] = React.useState(null);
+    const [unix, setUNIX] = React.useState(null);
 
     React.useEffect(() => {
-        fetch("/api/:date?")
-            .then((res) => res.json())
-            .then((data) => setData(data.message));
+        
     }, []);
 
     let getTimestamp = (e) => {
         e.preventDefault();
         let timestamp = e.target.timestamp.value;
-        console.log(timestamp);
+        fetch("/api/" + timestamp)
+            .then((res) => res.json())
+            .then((data) => {
+                setUTC(data.utc)
+                setUNIX(data.unix)
+            });
     }
+    
 
     return(
         <div>
-            <p>Timestamp Display: {!data ? "" : data}</p>
+            <p>Timestamp Display:<br></br></p>
+            <p> UTC: {!utc ? "None" : utc} <br></br></p>
+            <p> UNIX: {!unix ? "None" : unix} </p>
             <form id="timestampform" onSubmit={getTimestamp}>
                 <label htmlFor="timestamp">Enter a timestamp. (See examples.)<br></br></label>
-                <input type="text" id="timestamp" name="timestamp" defaultValue="timestamp examples"></input>
+                <input type="text" id="timestamp" name="timestamp" defaultValue=""></input>
                 {/*
                     onSubmit, take the timestamp and send to url/api/timestamp
                 */}
