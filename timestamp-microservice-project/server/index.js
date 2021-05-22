@@ -14,7 +14,7 @@ function createTimestamp(timestamp){
     let day = unixTime.getUTCDate();
     let month = months[unixTime.getUTCMonth()];
     let year = unixTime.getUTCFullYear();
-    let hour = unixTime.getUTCHours();
+    let hour = unixTime.getUTCHours() > 9 ? unixTime.getUTCHours() : "0" + unixTime.getUTCHours();
     let minutes = unixTime.getUTCMinutes() > 9 ? unixTime.getUTCMinutes() : "0" + unixTime.getUTCMinutes();
     let seconds = unixTime.getUTCSeconds() > 9 ? unixTime.getUTCSeconds() : "0" + unixTime.getUTCSeconds();
     let utcTime =  weekday + ", " + day + " " + month + " " + year + " " + hour + ":" + minutes + ":" + seconds + " GMT"; 
@@ -23,7 +23,9 @@ function createTimestamp(timestamp){
 }
 
 //given format yyyy-mm-dd
-//if valid.month and month are not equal then the days rolled over into a new month
+//if valid.month and month are not equal 
+//then the days rolled over into a new month
+//therefore invalid
 function isValidDate(date) {
     let splitDate = date.split("-");
     let year = splitDate[0];
