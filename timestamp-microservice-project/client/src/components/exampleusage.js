@@ -2,7 +2,7 @@ import Header from './header.js'
 
 function ExampleUsage(){
     return(
-        <div id="exampleusage" class="content">
+        <div id="exampleusage" className="content">
             < Header headerTitle="Example Usage"/>
             <h3>Example Usage: Conventional Timestamps</h3>
             <p>url/api/</p>

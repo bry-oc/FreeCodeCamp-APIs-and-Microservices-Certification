@@ -1,6 +1,6 @@
 function Title(props){
     return(
-        <div class="title">
+        <div className="title">
             <h1>{props.title}</h1>
         </div>
     );
