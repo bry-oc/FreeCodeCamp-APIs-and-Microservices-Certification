@@ -4,10 +4,6 @@ function Button(){
     const [utc, setUTC] = React.useState(null);
     const [unix, setUNIX] = React.useState(null);
 
-    React.useEffect(() => {
-        
-    }, []);
-
     let getTimestamp = (e) => {
         e.preventDefault();
         let timestamp = e.target.timestamp.value;

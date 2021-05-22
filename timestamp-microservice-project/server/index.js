@@ -11,7 +11,7 @@ function createTimestamp(timestamp){
     console.log(unixSeconds);
     let unixTime = new Date(unixSeconds);
     let weekday = days[unixTime.getUTCDay()];
-    let day = unixTime.getUTCDate();
+    let day = unixTime.getUTCDate() > 9 ? unixTime.getUTCDate() : "0" + unixTime.getUTCDate();
     let month = months[unixTime.getUTCMonth()];
     let year = unixTime.getUTCFullYear();
     let hour = unixTime.getUTCHours() > 9 ? unixTime.getUTCHours() : "0" + unixTime.getUTCHours();
@@ -69,7 +69,17 @@ app.get("/api/:date?", function(req, res){
             let timestampResult = createTimestamp(parseInt(timestamp));
             res.json(timestampResult);
         } else {
-            res.json({error: "Invalid Date"});
+            let timestamp = req.params.date;
+            let utcDate = new Date(timestamp);
+            if(utcDate != "Invalid Date"){
+                utcDate.setUTCHours(0, 0, 0, 0);
+                let unixTimestamp = utcDate.getTime();
+                console.log(typeof(unixTimestamp));
+                let timestampResult = createTimestamp(unixTimestamp);
+                res.json(timestampResult);
+            } else {
+                res.json({error: "Invalid Date"});
+            }            
         }
     }
 });
