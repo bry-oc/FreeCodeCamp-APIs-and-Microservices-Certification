@@ -29,6 +29,9 @@ body {
 .container li, p {
   text-align: left;
 }
+.container p {
+  padding-left: 20px;
+}
 h2 {
   padding-bottom: 10px;
 }
