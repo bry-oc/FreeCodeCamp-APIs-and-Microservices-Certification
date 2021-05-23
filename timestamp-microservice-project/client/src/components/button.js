@@ -22,12 +22,11 @@ function Button(){
     
 
     return(
-        <div>
+        <div className="container timeDisplay">
             <p>Timestamp Display:<br></br></p>
-            <p> UTC: {!utc ? "None" : utc} <br></br></p>
-            <p> UNIX: {!unix ? "None" : unix} </p>
+            <p> unix: {!unix ? "None" : unix}, utc: {!utc ? "None" : utc} </p>
             <form id="timestampform" onSubmit={getTimestamp}>
-                <label htmlFor="timestamp">Enter a timestamp. (See examples.)<br></br></label>
+                <label htmlFor="timestamp">Please enter a timestamp. (See examples.)<br></br></label>
                 <input type="text" id="timestamp" name="timestamp" defaultValue=""></input>
                 {/*
                     onSubmit, take the timestamp and send to url/api/timestamp

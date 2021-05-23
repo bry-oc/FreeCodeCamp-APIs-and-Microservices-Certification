@@ -2,7 +2,7 @@ import Header from './header.js'
 
 function UserStories(){
     return(
-        <div>
+        <div className="container">
             <Header headerTitle="User Stories" />
             <ul>
                 <li>user story #1</li>

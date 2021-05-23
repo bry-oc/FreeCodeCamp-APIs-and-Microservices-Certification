@@ -1,6 +1,6 @@
 function Header(props){
     return (
-        <h2>{props.headerTitle}</h2> 
+        <h2 className="header">{props.headerTitle}</h2> 
     );
 }
 
