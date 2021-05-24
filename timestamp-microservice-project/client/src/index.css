@@ -1,42 +1,61 @@
 body {
-  min-width: 220px;
-  margin:0 auto;
-  height: calc(100%-20px);
+  margin:0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #696969;
   overflow: auto;
+  word-wrap: normal;
+  background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/grey_sandbag.png);
 }
 .title {
   text-align: center;
+  margin: 10px;
 }
-.timeDisplay p{
-  text-align: center;
-}
-.container {
-  border: 1px solid black;
+.container, .main {
   text-align: center;
   max-width:720px;
   margin:0 auto;
-  padding: 20px;
+  padding: 20px 20px 20px 20px;
+}
+.main {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  box-shadow: 2px 2px 20px;
+  background-color: #eeeeee;
 }
 .container li, p {
   text-align: left;
 }
 .container p {
-  padding-left: 20px;
+  padding-left: 40px;
+}
+.container h3 {
+  padding-left: 20px
 }
 h2 {
   padding-bottom: 10px;
 }
+.timeDisplay {
+  padding: 0;
+}
+.timeDisplay p{
+  text-align: center;
+  padding-left: 0;
+}
 h3 {
   text-align: left;
+}
+.welcome {
+  padding-top: 10px;
+}
+.welcome p {
+  padding-left: 20px
+}
+.exampleUsage {
+  padding-top: 10px;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
